@@ -2,6 +2,8 @@
 
 set -ouex pipefail
 
+MAJOR_VERSION_NUMBER="$(sh -c '. /usr/lib/os-release ; echo $VERSION_ID')"
+export MAJOR_VERSION_NUMBER
 
 dnf install -y tmux
 
