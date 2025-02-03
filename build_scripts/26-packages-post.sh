@@ -2,10 +2,6 @@
 
 set -xeuo pipefail
 
-# Fancy CentOS icon on the fastfetch
-sed -i "s/󰣛//g" /usr/share/ublue-os/fastfetch.jsonc
-
-
 # The compose repos we used during the build are point in time repos that are
 # not updated, so we don't want to leave them enabled.
 # FIXME: figure out why this is not working

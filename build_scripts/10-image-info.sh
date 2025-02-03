@@ -2,21 +2,6 @@
 
 set -xeuo pipefail
 
-IMAGE_REF="ostree-image-signed:docker://ghcr.io/${IMAGE_VENDOR}/${IMAGE_NAME}"
-IMAGE_INFO="/usr/share/ublue-os/image-info.json"
-IMAGE_FLAVOR="main"
-
-cat >$IMAGE_INFO <<EOF
-{
-  "image-name": "${IMAGE_NAME}",
-  "image-ref": "${IMAGE_REF}",
-  "image-flavor": "${IMAGE_FLAVOR}",
-  "image-vendor": "${IMAGE_VENDOR}",
-  "image-tag": "${MAJOR_VERSION_NUMBER}",
-  "rhel-version": "${MAJOR_VERSION_NUMBER}"
-}
-EOF
-
 OLD_PRETTY_NAME="$(sh -c '. /usr/lib/os-release ; echo $NAME $VERSION')"
 IMAGE_PRETTY_NAME="Topaz"
 IMAGE_LIKE="rhel fedora"
