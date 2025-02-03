@@ -14,7 +14,7 @@ dnf config-manager --set-enabled crb
 dnf -y install "https://dl.fedoraproject.org/pub/epel/epel-release-latest-$MAJOR_VERSION_NUMBER.noarch.rpm"
 
 # Multimidia codecs
-dnf -y install @multimedia gstreamer1-plugins-{bad-free,bad-free-libs,good,base} lame{,-libs} libjxl
+dnf -y install @multimedia gstreamer1-plugins-{bad-free,good,base} lame{,-libs} libjxl
 
 # `dnf group info Workstation` without GNOME
 dnf group install -y --nobest \
