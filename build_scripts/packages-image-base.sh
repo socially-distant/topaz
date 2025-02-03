@@ -24,12 +24,8 @@ dnf group install -y --nobest \
 	-x crontabs \
 	-x PackageKit \
 	-x PackageKit-command-not-found \
-	"Common NetworkManager submodules" \
 	"Core" \
 	"Fonts" \
-	"Guest Desktop Agents" \
-	"Hardware Support" \
-	"Printing Client" \
 	"Standard" \
 	"Workstation product core"
 
