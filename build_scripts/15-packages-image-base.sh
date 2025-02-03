@@ -24,7 +24,6 @@ dnf group install -y --nobest \
 	-x crontabs \
 	-x PackageKit \
 	-x PackageKit-command-not-found \
-	"Common NetworkManager submodules" \
 	"Core" \
 	"Fonts" \
 	"Standard" \
