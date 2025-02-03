@@ -1,6 +1,6 @@
 export repo_organization := env("GITHUB_REPOSITORY_OWNER", "socially-distant")
 export image_name := env("IMAGE_NAME", "topaz")
-export centos_version := env("CENTOS_VERSION", "stream10")
+export centos_version := env("CENTOS_VERSION", "9")
 export default_tag := env("DEFAULT_TAG", "lts")
 export bib_image := env("BIB_IMAGE", "quay.io/centos-bootc/bootc-image-builder:latest")
 

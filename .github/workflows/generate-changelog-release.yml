@@ -4,7 +4,7 @@ on:
   workflow_call:
     inputs:
       stream_name:
-        description: "Release Tag (e.g. stream10, latest)"
+        description: "Release Tag (e.g. 9, latest)"
         type: string
         default: "latest"
         required: false
@@ -18,9 +18,9 @@ on:
         default: '["latest"]'
         type: choice
         options:
-          - '["stream10"]'
+          - '["9"]'
           - '["latest"]'
-          - '["stream10","latest"]'
+          - '["9","latest"]'
 
 permissions:
   contents: write

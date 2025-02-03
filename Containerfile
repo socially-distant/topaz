@@ -1,4 +1,4 @@
-ARG MAJOR_VERSION="${MAJOR_VERSION:-9.5}"
+ARG MAJOR_VERSION="${MAJOR_VERSION:-9}"
 FROM ghcr.io/ublue-os/config:latest@sha256:69fc2336720c1b2774d2c984a1ea2005612f0507a24de60a15e9564aca1d835c AS config
 FROM quay.io/almalinuxorg/almalinux-bootc:$MAJOR_VERSION
 
