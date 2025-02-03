@@ -1,7 +1,7 @@
 export repo_organization := env("GITHUB_REPOSITORY_OWNER", "socially-distant")
 export image_name := env("IMAGE_NAME", "topaz")
-export centos_version := env("CENTOS_VERSION", "9")
-export default_tag := env("DEFAULT_TAG", "lts")
+export rhel_version := env("RHEL_VERSION", "9")
+export default_tag := env("DEFAULT_TAG", "latest")
 export bib_image := env("BIB_IMAGE", "quay.io/centos-bootc/bootc-image-builder:latest")
 
 alias build-vm := build-qcow2
@@ -73,10 +73,10 @@ build $target_image=image_name $tag=default_tag $dx="0" $hwe="0" $gdx="0":
     #!/usr/bin/env bash
 
     # Get Version
-    ver="${tag}-${centos_version}.$(date +%Y%m%d)"
+    ver="${tag}-${rhel_version}.$(date +%Y%m%d)"
 
     BUILD_ARGS=()
-    BUILD_ARGS+=("--build-arg" "MAJOR_VERSION=${centos_version}")
+    BUILD_ARGS+=("--build-arg" "MAJOR_VERSION=${rhel_version}")
     BUILD_ARGS+=("--build-arg" "IMAGE_NAME=${image_name}")
     BUILD_ARGS+=("--build-arg" "IMAGE_VENDOR=${repo_organization}")
     BUILD_ARGS+=("--build-arg" "ENABLE_DX=${dx}")

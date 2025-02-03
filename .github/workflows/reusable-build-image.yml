@@ -22,7 +22,7 @@ on:
         required: false
         type: string
         default: "amd64,arm64"
-      centos-version:
+      rhel-version:
         description: "The version of CentOS to build the image on"
         required: false
         type: string
@@ -36,8 +36,8 @@ env:
   IMAGE_NAME: ${{ inputs.image-name }}
   IMAGE_DESC: ${{ inputs.image-desc }}
   IMAGE_REGISTRY: "ghcr.io/${{ github.repository_owner }}"
-  DEFAULT_TAG: "lts"
-  CENTOS_VERSION: ${{ inputs.centos-version }}
+  DEFAULT_TAG: "latest"
+  RHEL_VERSION: ${{ inputs.rhel-version }}
   PLATFORMS: ${{ inputs.platforms }}
 
 jobs:
@@ -130,7 +130,7 @@ jobs:
           ref: "localhost/${{ env.IMAGE_NAME }}:${{ env.DEFAULT_TAG }}"
           prev-ref: "${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.DEFAULT_TAG }}"
           skip_compression: true
-          version: ${{ env.CENTOS_VERSION }}
+          version: ${{ env.RHEL_VERSION }}
 
       - name: Load Image
         if: github.event_name != 'pull_request'
@@ -213,7 +213,7 @@ jobs:
             /tmp/outputs/digests/*.txt
 
   manifest:
-    name: Create ${{ inputs.image-name }}:${{ inputs.centos-version }} Manifest
+    name: Create ${{ inputs.image-name }}:${{ inputs.rhel-version }} Manifest
     runs-on: ubuntu-latest
     if: always()
     needs:
@@ -268,10 +268,10 @@ jobs:
         id: metadata
         with:
           tags: |
-            type=raw,value=lts
-            type=raw,value=lts-{{date 'YYYYMMDD'}}
-            type=raw,value=${{ env.CENTOS_VERSION }}
-            type=raw,value=${{ env.CENTOS_VERSION }}.{{date 'YYYYMMDD'}}
+            type=raw,value=latest
+            type=raw,value=latest-{{date 'YYYYMMDD'}}
+            type=raw,value=${{ env.RHEL_VERSION }}
+            type=raw,value=${{ env.RHEL_VERSION }}.{{date 'YYYYMMDD'}}
             type=ref,event=pr
           labels: |
             io.artifacthub.package.readme-url=https://raw.githubusercontent.com/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}/refs/heads/main/README.md
@@ -282,9 +282,9 @@ jobs:
             org.opencontainers.image.title=${{ env.IMAGE_NAME }}
             org.opencontainers.image.url=https://distant.social
             org.opencontainers.image.vendor=${{ github.repository_owner }}
-            org.opencontainers.image.version=${{ env.CENTOS_VERSION }}
+            org.opencontainers.image.version=${{ env.RHEL_VERSION }}
             io.artifacthub.package.deprecated=false
-            io.artifacthub.package.keywords=bootc,centos,bluefin,ublue,universal-blue
+            io.artifacthub.package.keywords=bootc,rhel,bluefin,ublue,universal-blue
             io.artifacthub.package.license=Apache-2.0
             io.artifacthub.package.logo-url=https://avatars.githubusercontent.com/u/120078124?s=200&v=4
             io.artifacthub.package.maintainers=[{\"name\":\"tulilirockz\",\"email\":\"tulilirockz@outlook.com\"},{\"name\":\"castrojo\",\"email\":\"jorge.castro@gmail.com\"}]

@@ -27,7 +27,7 @@ permissions:
 
 name: Generate Release
 jobs:
-  defaults:
+  defaulatest:
     runs-on: ubuntu-latest
     outputs:
       streams: ${{ steps.streams.outputs.stream_names }}
@@ -43,11 +43,11 @@ jobs:
 
   generate-release:
     runs-on: ubuntu-latest
-    needs: defaults
+    needs: defaulatest
     strategy:
       fail-fast: false
       matrix:
-        version: ${{ fromJson( needs.defaults.outputs.streams ) }}
+        version: ${{ fromJson( needs.defaulatest.outputs.streams ) }}
     steps:
       - name: Checkout last 500 commits (for <commits> to work)
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
