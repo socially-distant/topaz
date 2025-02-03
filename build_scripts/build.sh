@@ -27,7 +27,7 @@ copy_systemfiles_for() {
 	printf "::endgroup::\n"
 }
 
-MAJOR_VERSION_NUMBER="$(sh -c '. /usr/lib/os-release ; echo $VERSION_ID')"
+MAJOR_VERSION_NUMBER="$(sh -c '. /usr/lib/os-release ; echo $VERSION_ID | cut -d'.' -f1')"
 export MAJOR_VERSION_NUMBER
 
 for script in /var/tmp/build_scripts/*-*.sh; do
